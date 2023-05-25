@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Noto Sans', sans-serif;
+  background-color: #f0f2f5;
+  color: #333;
+}
+
+body.image {
+  background-image: url('https://wallpapercave.com/wp/wp4853207.jpg');
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  gap: 0.85rem;
+  min-width: 26.5rem;
+  max-width: 26.5rem;
+  background-color: #fff;
+}
+
+.todo-item__text {
+  min-width: 10rem;
+  font-size: 1.25rem;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+input[type='text'] {
+  font-size: 1rem;
+  font-weight: 400;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+
+input[type='text']:focus {
+  border-color: #007bff;
+}
+
+input[type='checkbox'] {
+  margin-right: 0.5rem;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+select {
+  border-radius: 5px;
+  background-color: #fff;
+  outline: none;
+  width: fit-content;
+  height: 1.7rem;
+  
+}
+
+.btn-group {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+button {
+  font-size: 1rem;
+  color: #fff;
+  background-color: #333;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+  scale: 0.95;
+  transition: all 300ms;
+}
+
+button:active {
+  background-color: #005cbf;
+}
+
+button:disabled {
+  background-color: #adadad;
+  cursor: default;
+}
+
+button.red {
+  background-color: red;
+}
+
+button.red:hover {
+  background-color: red;
+  opacity: 0.8;
+  scale: 0.95;
+  transition: all 300ms;
+}
+
+button.green {
+  background-color: green;
+}
+
+button.green:hover {
+  background-color: green;
+  opacity: 0.8;
+  scale: 0.95;
+  transition: all 300ms;
+}
+
+button.blue {
+  background-color: #007bff;
+}
+button.blue:hover {
+  background-color: #007bff;
+  opacity: 0.8;
+  scale: 0.95;
+  transition: all 300ms;
+}
+
+ul {
+  list-style-type: none;
+  margin-top: 2rem;
+}
