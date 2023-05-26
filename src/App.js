@@ -69,6 +69,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>React To-Do App</h1>
       <div className="input-group">
         <input
           type="text"
@@ -132,8 +133,8 @@ function App() {
                     </option>
                   ))}
                 </select>
-                <button onClick={() => toggleUpdating(todo.id)}>Save</button>
-                <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+                <button className="edit" onClick={() => toggleUpdating(todo.id)}>Save</button>
+                <button className="edit" onClick={() => deleteTodo(todo.id)}>Delete</button>
               </div>
             )}
           </div>
