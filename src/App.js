@@ -5,8 +5,13 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
   const [updating, setUpdating] = useState(false);
-  const [categories, setCategories] = useState(["Red", "Green", "Blue", "None"]);
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [categories] = useState([
+    "Red",
+    "Green",
+    "Blue",
+    "None",
+  ]);
+  const [selectedCategory, setSelectedCategory] = useState("Red");
 
   function addTodo() {
     if (newTodo.trim()) {
@@ -55,7 +60,9 @@ function App() {
     setUpdating(!updating);
     setTodos(
       todos.map((todo) =>
-        todo.id === id ? { ...todo, updating: !todo.updating } : todo
+        todo.id === id
+          ? { ...todo, updating: !todo.updating, completed: false }
+          : todo
       )
     );
   }
@@ -67,8 +74,8 @@ function App() {
           type="text"
           placeholder="Add a task"
           value={newTodo}
-          onChange={e => setNewTodo(e.target.value)}
-          onKeyDown={e => (e.key === 'Enter' ? addTodo() : null)}
+          onChange={(e) => setNewTodo(e.target.value)}
+          onKeyDown={(e) => (e.key === "Enter" ? addTodo() : null)}
         />
         <select
           value={selectedCategory}
@@ -82,41 +89,55 @@ function App() {
         </select>
       </div>
 
-     <ul>
-      {todos.map((todo) => (
-        <div className="input-group" key={todo.id}>
-          {!todo.updating ? (
-            <div className="todo-item">
-              
-              <span className="todo-item__text">{todo.text}</span>
-              <button className={`${todo.category.toLowerCase()}`} onClick={() => toggleUpdating(todo.id)}>Edit</button>
-              <button className={`${todo.category.toLowerCase()}`} onClick={() => deleteTodo(todo.id)}>Delete</button>
-            </div>
-          ) : (
-            <div>
-             <div className="edit">
-              <input className="todo-item"
-                type="text"
-                value={todo.text}
-                onChange={(e) => updateTodo(todo.id, e.target.value)}
-              />
-              <select
-                value={todo.category}
-                onChange={(e) => setCategory(todo.id, e.target.value)}
-              >
-                {categories.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-              <button onClick={() => toggleUpdating(todo.id)}>Save</button>
-              <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+      <ul>
+        {todos.map((todo) => (
+          <div className="input-group" key={todo.id}>
+            {!todo.updating ? (
+              <div className="todo-item">
+                <input
+                  type="checkbox"
+                  disabled={todo.updating && updating ? true : false}
+                  checked={todo.completed}
+                  onChange={() => toggleTodo(todo.id)}
+                />
+                <span className="todo-item__text" style={{ textDecoration: todo.completed ? 'line-through' : 'none'}}>{todo.text}</span>
+                <button
+                  className={`${todo.category.toLowerCase()}`}
+                  onClick={() => toggleUpdating(todo.id)}
+                >
+                  Edit
+                </button>
+                <button
+                  className={`${todo.category.toLowerCase()}`}
+                  onClick={() => deleteTodo(todo.id)}
+                >
+                  Delete
+                </button>
               </div>
-            </div>
-          )}
-        </div>
-      ))}
+            ) : (
+              <div>
+                <input
+                  className="todo-item"
+                  type="text"
+                  value={todo.text}
+                  onChange={(e) => updateTodo(todo.id, e.target.value)}
+                />
+                <select
+                  value={todo.category}
+                  onChange={(e) => setCategory(todo.id, e.target.value)}
+                >
+                  {categories.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
+                <button onClick={() => toggleUpdating(todo.id)}>Save</button>
+                <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+              </div>
+            )}
+          </div>
+        ))}
       </ul>
     </div>
   );

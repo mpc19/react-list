@@ -43,6 +43,7 @@ h1 {
   gap: 0.85rem;
   min-width: 26.5rem;
   max-width: 26.5rem;
+  overflow-wrap: break-word;
   background-color: #fff;
 }
 
